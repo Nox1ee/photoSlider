@@ -16,11 +16,13 @@ function initSlider() {
     let sliderArrows = document.querySelector(".projects__arrows");
     let sliderDots = document.querySelector(".projects__slider-dots");
     let sliderLinks = document.querySelector(".projects__slider-list");
+    let sliderDesc = document.querySelector(".projects");
   
     initImages();
     initArrows();
     initDots();
     initLinks();
+    initDesc();
 
     function initImages() {
         images.forEach((image, index) => {
@@ -67,6 +69,18 @@ function initSlider() {
             });
         });
     }
+
+    function initDesc() {
+        sliderDesc.querySelectorAll(".projects__parameters").forEach((item, index) => {
+            item.classList.add(`n${index}`);
+            item.classList.toggle("active", index === 0);
+            item.setAttribute("data-index", `${index}`);
+
+            item.addEventListener("click", function() {
+                moveSlider(this.dataset.index);
+            });
+        });
+    }
     
   
     function moveSlider(num) {
@@ -78,6 +92,9 @@ function initSlider() {
 
         sliderLinks.querySelector(".active").classList.remove("active");
         sliderLinks.querySelector(".n" + num).classList.add("active");
+
+        sliderDesc.querySelector(".active").classList.remove("active");
+        sliderDesc.querySelector(".n" + num).classList.add("active");
     }
 }
 
