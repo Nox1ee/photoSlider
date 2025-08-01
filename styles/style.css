@@ -66,9 +66,17 @@ p {
 .projects__parameters {
     margin-top: 42px;
 
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 34px;
+}
+
+/* .projects__parameters.inactive {
+    display: none;
+} */
+
+.projects__parameters.active {
+    display: flex;
 }
 
 .projects__parameters-item {
